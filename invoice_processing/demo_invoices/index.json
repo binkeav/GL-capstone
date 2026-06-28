@@ -1,0 +1,22 @@
+{
+  "samples": [
+    {
+      "name": "01_straight_through_acme",
+      "docx": "01_straight_through_acme.docx",
+      "json": "01_straight_through_acme.json",
+      "expected_demo_state": "STRAIGHT_THROUGH_PROCESSING"
+    },
+    {
+      "name": "02_human_review_mismatch",
+      "docx": "02_human_review_mismatch.docx",
+      "json": "02_human_review_mismatch.json",
+      "expected_demo_state": "HUMAN_IN_THE_LOOP"
+    },
+    {
+      "name": "03_critical_blocked_vendor",
+      "docx": "03_critical_blocked_vendor.docx",
+      "json": "03_critical_blocked_vendor.json",
+      "expected_demo_state": "CRITICAL_REJECTION"
+    }
+  ]
+}

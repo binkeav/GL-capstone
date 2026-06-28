@@ -1,0 +1,35 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.venv/
+gl-capstone/
+ocr-agent/.venv/
+
+# OS/editor noise
+.DS_Store
+
+# Local secrets
+.env
+**/.env
+
+# Runtime data and generated indexes
+logs/
+*.log
+*.sqlite3
+*.db
+Val-agent/data/*.sqlite3
+Val-agent/data/invoice_rag/
+ocr-agent/outputs/
+
+# Large/local OCR assets and datasets
+ocr-agent/Datasets/
+ocr-agent/qwen-vl/
+ocr-agent/qwen3-vl-8b/
+ocr-agent/*.pth

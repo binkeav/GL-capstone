@@ -1,0 +1,39 @@
+{
+  "invoice_number": "INV-DEMO-001",
+  "invoice_date": "2026-06-17",
+  "due_date": "2026-07-17",
+  "po_number": "PO-1001",
+  "payment_terms": "Net 30",
+  "vendor_name": "Acme Supplies India",
+  "vendor_tax_id": "29ABCDE1234F1Z5",
+  "customer_name": "Demo Buyer India",
+  "customer_tax_id": "29ZZZZZ9999Z1Z5",
+  "subtotal": 1200,
+  "tax": 216,
+  "shipping": 0,
+  "discounts": 0,
+  "total": 1416,
+  "currency": "INR",
+  "order_items": [
+    {
+      "line_no": 1,
+      "description": "Laptop Stand",
+      "qty": 1,
+      "unit": "pcs",
+      "unit_price": 1000,
+      "net_amount": 1000,
+      "tax_rate": 18,
+      "gross_amount": 1180
+    },
+    {
+      "line_no": 2,
+      "description": "USB Cable",
+      "qty": 2,
+      "unit": "pcs",
+      "unit_price": 100,
+      "net_amount": 200,
+      "tax_rate": 18,
+      "gross_amount": 236
+    }
+  ]
+}

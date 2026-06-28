@@ -1,0 +1,29 @@
+{
+  "invoice_number": null,
+  "invoice_date": null,
+  "due_date": null,
+  "po_number": null,
+  "payment_terms": null,
+  "vendor_name": null,
+  "vendor_tax_id": null,
+  "customer_name": null,
+  "customer_tax_id": null,
+  "subtotal": null,
+  "tax": null,
+  "shipping": null,
+  "discounts": null,
+  "total": null,
+  "currency": null,
+  "order_items": [
+    {
+      "line_no": null,
+      "description": null,
+      "qty": null,
+      "unit": null,
+      "unit_price": null,
+      "net_amount": null,
+      "tax_rate": null,
+      "gross_amount": null
+    }
+  ]
+}
