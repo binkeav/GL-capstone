@@ -89,9 +89,12 @@ class Milestone1NotebookAPI:
         self.craft_model_path = self.easyocr_model_dir / "craft_mlt_25k.pth"
         self.english_model_path = self.easyocr_model_dir / "english_g2.pth"
 
+        easyocr_download_enabled = self._easyocr_download_enabled()
         if not self.craft_model_path.exists() or not self.english_model_path.exists():
-            raise FileNotFoundError(
-                "Required EasyOCR model files not found: craft_mlt_25k.pth and english_g2.pth"
+            logger.warning(
+                "EasyOCR local model files not found; download_enabled=%s model_dir=%s",
+                easyocr_download_enabled,
+                self.easyocr_model_dir,
             )
 
         self.reader = easyocr.Reader(
@@ -101,7 +104,7 @@ class Milestone1NotebookAPI:
             user_network_directory=str(self.easyocr_user_network_dir),
             detect_network="craft",
             recog_network="english_g2",
-            download_enabled=False,
+            download_enabled=easyocr_download_enabled,
             verbose=False,
         )
 
@@ -170,6 +173,14 @@ class Milestone1NotebookAPI:
         except ValueError:
             return default
         return max(min_value, min(max_value, value))
+
+    def _easyocr_download_enabled(self) -> bool:
+        configured = os.getenv("EASYOCR_DOWNLOAD_ENABLED", "").strip().lower()
+        if configured in {"1", "true", "yes", "on"}:
+            return True
+        if configured in {"0", "false", "no", "off"}:
+            return False
+        return not (self.craft_model_path.exists() and self.english_model_path.exists())
 
     def _ensure_layout_worker(self) -> bool:
         if self._layout_proc is not None and self._layout_proc.poll() is None:

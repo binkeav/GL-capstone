@@ -1,10 +1,38 @@
 from __future__ import annotations
 
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
 import streamlit as st
+
+
+def _apply_streamlit_secrets_to_env() -> None:
+    try:
+        secrets = st.secrets
+    except Exception:
+        return
+    for key in (
+        "OPENAI_API_KEY",
+        "OPENAI_API_BASE",
+        "OPENAI_BASE_URL",
+        "VAL_AGENT_LLM_MODEL",
+        "INVOICE_PROCESSING_LLM_MODEL",
+        "FIELD_EXTRACTOR_MODE",
+        "EASYOCR_DOWNLOAD_ENABLED",
+        "INVOICE_PROCESSING_MEMORY_WINDOW_MESSAGES",
+        "INVOICE_PROCESSING_MEMORY_WINDOW_CHARS",
+    ):
+        try:
+            value = secrets.get(key)
+        except Exception:
+            value = None
+        if value and not os.getenv(key):
+            os.environ[key] = str(value)
+
+
+_apply_streamlit_secrets_to_env()
 
 from invoice_processing.logging_config import configure_logging
 from invoice_processing.chat_agent import (

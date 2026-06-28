@@ -18,6 +18,7 @@ ocr-agent/.venv/
 # Local secrets
 .env
 **/.env
+.streamlit/secrets.toml
 
 # Runtime data and generated indexes
 logs/
